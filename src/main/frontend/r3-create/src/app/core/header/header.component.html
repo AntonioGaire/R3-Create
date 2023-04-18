@@ -1,0 +1,125 @@
+<header class="bg-primary">
+<section class=" container-xl no-gutters d-flex justify-content-between align-items-center flex-row">
+  <section id="logo" class="p-2" [routerLink]="['/home/']">
+    <img src="./assets/logo/svg-short-logo.svg" class="d-flex">
+  </section>
+
+  <section id="searchbar" class="d-none rounded bg-light d-md-flex col-md-4 col-bg-6 flex-row align-self-center ">
+    <input type="text" placeholder="Busqueda" class=" rounded d-flex border-0 flex-grow-1">
+    <i class="fa-solid fa-magnifying-glass d-flex align-self-center p-2"></i>
+  </section>
+
+  <section id="log" class="d-md-block">
+    <section id="btndsp" class="d-none d-md-block">
+      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#signUpModal">Registrarse</button>
+      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Acceder</button>
+    </section>
+
+    <div class="modal" id="loginModal" tabindex="-1" aria-labelledby="Acceder" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen-md-down">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="logInModalLabel">Log in</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <section id="maincontainer" class="container-md justify-content-center row">
+              <section id="loginlogo" class="d-flex justify-content-center p-2 mt-5 ">
+                <i class="fa-solid fa-user fa-10x text-primary"></i>
+              </section>
+              <section id="logininfo" class="col-5">
+
+                <section id="mail" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                  <input type="text" placeholder="Correo" class=" rounded d-flex flex-grow-1">
+                  <i class="fa-solid fa-envelope p-1 align-self-center"></i>
+                </section>
+
+                <section id="pass" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                  <input type="text" placeholder="Contraseña" class=" rounded d-flex flex-grow-1">
+                  <i class="fa-solid fa-lock p-1 align-self-center"></i>
+                </section>
+              </section>
+            </section>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <a href="controlUsuarios.html"><button type="button" class="btn btn-primary">Acceder</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="signUpModal" tabindex="-1" aria-labelledby="Acceder" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen-md-down">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signUpModalLabel">Registro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <section id="maincontainer" class="container-md justify-content-center row">
+              <section id="loginlogo" class="d-flex justify-content-center p-2 mt-5 ">
+                <i class="fa-solid fa-user fa-10x text-primary"></i>
+              </section>
+              <section id="logininfo" class="col-5">
+
+                <section id="username" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                  <input type="text" placeholder="Usuario" class=" rounded d-flex flex-grow-1">
+                  <i class="fa-solid fa-signature p-1 align-self-center"></i>
+                </section>
+
+                <section id="mail" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                  <input type="text" placeholder="Correo" class=" rounded d-flex flex-grow-1">
+                  <i class="fa-solid fa-envelope p-1 align-self-center"></i>
+                </section>
+
+                <section id="pass" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                  <input type="text" placeholder="Contraseña" class=" rounded d-flex flex-grow-1">
+                  <i class="fa-solid fa-lock p-1 align-self-center"></i>
+                </section>
+                <section id="confpass" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                  <input type="text" placeholder="Confirme su contraseña" class=" rounded d-flex flex-grow-1">
+                  <i class="fa-solid fa-lock p-1 align-self-center"></i>
+                </section>
+              </section>
+            </section>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <a href="controlUsuarios.html"><button type="button" class="btn btn-primary">Acceder</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <button type="button" class="btn btn-primary d-flex d-md-none border-0 navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarToggleExternalContent2"
+          aria-controls="navbarToggleExternalContent1"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+
+  >
+    <i class="fa-solid fa-bars text-success fa-2x d-flex align-self-center"></i>
+  </button>
+
+</section>
+<div class="collapse justify-content-center d-md-none" id="navbarToggleExternalContent2">
+  <ul class="bg-primary list-group">
+
+    <div id="buttons" class=" d-flex flex-row justify-content-around list-group-item bg-primary border-0">
+      <li class="d-flex justify-content-center bg-primary border-0"><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#signUpModal">Registrarse</button></li>
+      <li class="d-flex justify-content-center bg-primary border-0"><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Acceder</button></li>
+    </div>
+    <ul class="list-group my-2 rounded">
+      <li class="list-group-item"><a href="index.html" class="text-decoration-none">Inicio</a></li>
+      <li class="list-group-item"><a href="Quests.html" class="text-decoration-none">Quests</a></li>
+      <li class="list-group-item"><a href="foro.html" class="text-decoration-none">Foro</a></li>
+      <li class="list-group-item"><a href="Papercraft.html" class="text-decoration-none">Papercraft</a></li>
+      <li class="list-group-item"><a href="Modelos.html" class="text-decoration-none">Modelos</a></li>
+    </ul>
+  </ul>
+</div>
+</header>

@@ -1,0 +1,129 @@
+insert into accesslevel (name, created_date, modified_date)
+values ('admin', current_timestamp ,current_timestamp ),
+       ('moderator', current_timestamp ,current_timestamp ),
+       ('creator', current_timestamp ,current_timestamp ),
+       ('standard', current_timestamp ,current_timestamp );
+
+
+insert into posttype (name, created_date, modified_date)
+values ('papercraft',current_timestamp ,current_timestamp ),
+       ('model',current_timestamp ,current_timestamp ),
+       ('quest',current_timestamp ,current_timestamp );
+
+insert into category (name, created_date, modified_date)
+values ('halloween',current_timestamp ,current_timestamp ),
+       ('dog',current_timestamp ,current_timestamp ),
+       ('fish',current_timestamp ,current_timestamp ),
+       ('tool',current_timestamp ,current_timestamp ),
+       ('repair',current_timestamp ,current_timestamp ),
+       ('bird',current_timestamp ,current_timestamp ),
+       ('christmas',current_timestamp ,current_timestamp ),
+       ('magic',current_timestamp ,current_timestamp ),
+       ('vehicle',current_timestamp ,current_timestamp ),
+       ('farm',current_timestamp ,current_timestamp );
+
+insert into user (username, id_accesslevel, created_date, modified_date)
+values ('user1', 1, current_timestamp, current_timestamp),
+       ('user2', 1, current_timestamp, current_timestamp),
+       ('user3', 2, current_timestamp, current_timestamp),
+       ('user4', 3, current_timestamp, current_timestamp),
+       ('user5', 4, current_timestamp, current_timestamp);
+
+insert into post (title, description, id_posttype, id_user, created_date, modified_date)
+values ('Post 1', 'Descripción del primer post', 1, 1, current_timestamp , current_timestamp),
+       ('Post 2', 'Descripción del segundo post', 2, 2, current_timestamp , current_timestamp),
+       ('Post 3', 'Descripción del tercer post', 3, 3, current_timestamp , current_timestamp),
+       ('Post 4', 'Descripción del cuarto post', 1, 4, current_timestamp , current_timestamp),
+       ('Post 5', 'Descripción del quinto post', 2, 1, current_timestamp , current_timestamp);
+
+insert into image (title, alt, src, id_post, created_date, modified_date)
+values ('alpaca','Image of a low poly alpaca','https://drive.google.com/uc?id=1vAzO7iog5gcxMFQ2B-pv8GBcqn88lgGK', 1, current_timestamp, current_timestamp),
+       ('caballo','Image of a low poly horse','https://drive.google.com/uc?id=1QUyWI2GJtmlARbG5aHfEC8H5sR0oPLCr', 2, current_timestamp, current_timestamp),
+       ('caballo-cr','Cropped image of a low poly horse','https://drive.google.com/uc?id=1zuxs5YLkCV6fZt52022F00hKGf9tgHtY', 2, current_timestamp, current_timestamp),
+       ('cerdo','Image of a low poly pig','https://drive.google.com/uc?id=195dTIjnIc8yJXyozDnCCbZnRXjrEpSb-', 3, current_timestamp, current_timestamp),
+       ('oveja','Image of a low poly sheep','https://drive.google.com/uc?id=1KoHuSDiZRIPf1tzXOkUiHBfsp21NNbmr', 4, current_timestamp, current_timestamp),
+       ('pug','Image of a low poly pug dog','https://drive.google.com/uc?id=15FUdhyanQO0ops-JAV_UBunRl4WKNG9z', 5, current_timestamp, current_timestamp),
+       ('pug-cr','Cropped image of a low poly pug dog','https://drive.google.com/uc?id=1Km1pS_YTwKExRjYj73QYuRwtR-biapPZ', 5, current_timestamp, current_timestamp),
+       ('vaca','Image of a low poly cow','https://drive.google.com/uc?id=1lwvDVfb0tx2xg1Sb_O7HT6hSOku4p8TD', 2, current_timestamp, current_timestamp);
+
+insert into post_category (id_post, id_category)
+values (1,10),
+       (2,9),
+       (2,10),
+       (3,10),
+       (4,10),
+       (5,2);
+
+insert into comment (description, id_comment_sr, id_post, created_date, modified_date)
+values ('Comentario al primer post', null, 1, current_timestamp, current_timestamp),
+       ('Segundo comentario al primer post', null, 1, current_timestamp, current_timestamp),
+       ('Comentario al segundo post', null, 2, current_timestamp, current_timestamp),
+       ('Segundo comentario al segundo post', null, 2, current_timestamp, current_timestamp),
+       ('Respuesta al primer comentario del segundo post', 3, 2, current_timestamp, current_timestamp),
+       ('Comentario al tercer post', null, 3, current_timestamp, current_timestamp),
+       ('Comentario al cuarto post', null, 4, current_timestamp, current_timestamp);
+
+insert into accesslevel (name, created_date, modified_date)
+values ('admin', current_timestamp ,current_timestamp ),
+       ('moderator', current_timestamp ,current_timestamp ),
+       ('creator', current_timestamp ,current_timestamp ),
+       ('standard', current_timestamp ,current_timestamp );
+
+
+insert into posttype (name, created_date, modified_date)
+values ('papercraft',current_timestamp ,current_timestamp ),
+       ('model',current_timestamp ,current_timestamp ),
+       ('quest',current_timestamp ,current_timestamp );
+
+insert into category (name, created_date, modified_date)
+values ('halloween',current_timestamp ,current_timestamp ),
+       ('dog',current_timestamp ,current_timestamp ),
+       ('fish',current_timestamp ,current_timestamp ),
+       ('tool',current_timestamp ,current_timestamp ),
+       ('repair',current_timestamp ,current_timestamp ),
+       ('bird',current_timestamp ,current_timestamp ),
+       ('christmas',current_timestamp ,current_timestamp ),
+       ('magic',current_timestamp ,current_timestamp ),
+       ('vehicle',current_timestamp ,current_timestamp ),
+       ('farm',current_timestamp ,current_timestamp );
+
+insert into user (username, id_accesslevel, created_date, modified_date)
+values ('user1', 1, current_timestamp, current_timestamp),
+       ('user2', 1, current_timestamp, current_timestamp),
+       ('user3', 2, current_timestamp, current_timestamp),
+       ('user4', 3, current_timestamp, current_timestamp),
+       ('user5', 4, current_timestamp, current_timestamp);
+
+insert into post (title, description,kudos, id_posttype, id_user, created_date, modified_date)
+values ('Post 1', 'Descripción del primer post', 50, 1, 1, current_timestamp , current_timestamp),
+       ('Post 2', 'Descripción del segundo post', 10, 2, 2, current_timestamp , current_timestamp),
+       ('Post 3', 'Descripción del tercer post', 500, 3, 3, current_timestamp , current_timestamp),
+       ('Post 4', 'Descripción del cuarto post', 5, 1, 4, current_timestamp , current_timestamp),
+       ('Post 5', 'Descripción del quinto post', 12, 2, 1, current_timestamp , current_timestamp);
+
+insert into image (title, alt, src, id_post, created_date, modified_date)
+values ('alpaca','Image of a low poly alpaca','https://drive.google.com/uc?id=1vAzO7iog5gcxMFQ2B-pv8GBcqn88lgGK', 1, current_timestamp, current_timestamp),
+       ('caballo','Image of a low poly horse','https://drive.google.com/uc?id=1QUyWI2GJtmlARbG5aHfEC8H5sR0oPLCr', 2, current_timestamp, current_timestamp),
+       ('caballo-cr','Cropped image of a low poly horse','https://drive.google.com/uc?id=1zuxs5YLkCV6fZt52022F00hKGf9tgHtY', 2, current_timestamp, current_timestamp),
+       ('cerdo','Image of a low poly pig','https://drive.google.com/uc?id=195dTIjnIc8yJXyozDnCCbZnRXjrEpSb-', 3, current_timestamp, current_timestamp),
+       ('oveja','Image of a low poly sheep','https://drive.google.com/uc?id=1KoHuSDiZRIPf1tzXOkUiHBfsp21NNbmr', 4, current_timestamp, current_timestamp),
+       ('pug','Image of a low poly pug dog','https://drive.google.com/uc?id=15FUdhyanQO0ops-JAV_UBunRl4WKNG9z', 5, current_timestamp, current_timestamp),
+       ('pug-cr','Cropped image of a low poly pug dog','https://drive.google.com/uc?id=1Km1pS_YTwKExRjYj73QYuRwtR-biapPZ', 5, current_timestamp, current_timestamp),
+       ('vaca','Image of a low poly cow','https://drive.google.com/uc?id=1lwvDVfb0tx2xg1Sb_O7HT6hSOku4p8TD', 2, current_timestamp, current_timestamp);
+
+insert into post_category (id_post, id_category)
+values (1,10),
+       (2,9),
+       (2,10),
+       (3,10),
+       (4,10),
+       (5,2);
+
+insert into comment (text, kudos, id_user, id_comment_sr, id_post, created_date, modified_date)
+values ('Comentario al primer post', 50, 1, null, 1, current_timestamp, current_timestamp),
+       ('Segundo comentario al primer post', 5, 2, null, 1, current_timestamp, current_timestamp),
+       ('Comentario al segundo post', 500, 3, null, 2, current_timestamp, current_timestamp),
+       ('Segundo comentario al segundo post', 4, 1, null, 2, current_timestamp, current_timestamp),
+       ('Respuesta al primer comentario del segundo post', 50, 1, 3, 2, current_timestamp, current_timestamp),
+       ('Comentario al tercer post', 10, 2, null, 3, current_timestamp, current_timestamp),
+       ('Comentario al cuarto post', 4, 3, null, 4, current_timestamp, current_timestamp);
