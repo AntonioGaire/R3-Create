@@ -23,18 +23,18 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <section id="maincontainer" class="container-md justify-content-center row">
-              <section id="loginlogo" class="d-flex justify-content-center p-2 mt-5 ">
+            <section id="maincontainer1" class="container-md justify-content-center row">
+              <section id="loginlogo1" class="d-flex justify-content-center p-2 mt-5 ">
                 <i class="fa-solid fa-user fa-10x text-primary"></i>
               </section>
-              <section id="logininfo" class="col-5">
+              <section id="logininfo1" class="col-5">
 
-                <section id="mail" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                <section id="mail1" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
                   <input type="text" placeholder="Correo" class=" rounded d-flex flex-grow-1">
                   <i class="fa-solid fa-envelope p-1 align-self-center"></i>
                 </section>
 
-                <section id="pass" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                <section id="pass1" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
                   <input type="text" placeholder="Contraseña" class=" rounded d-flex flex-grow-1">
                   <i class="fa-solid fa-lock p-1 align-self-center"></i>
                 </section>
@@ -114,11 +114,11 @@
       <li class="d-flex justify-content-center bg-primary border-0"><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Acceder</button></li>
     </div>
     <ul class="list-group my-2 rounded">
-      <li class="list-group-item"><a href="index.html" class="text-decoration-none">Inicio</a></li>
-      <li class="list-group-item"><a href="Quests.html" class="text-decoration-none">Quests</a></li>
-      <li class="list-group-item"><a href="foro.html" class="text-decoration-none">Foro</a></li>
-      <li class="list-group-item"><a href="Papercraft.html" class="text-decoration-none">Papercraft</a></li>
-      <li class="list-group-item"><a href="Modelos.html" class="text-decoration-none">Modelos</a></li>
+      <li class="list-group-item"><a [routerLink]="['/home']" class="text-decoration-none">Inicio</a></li>
+      <li class="list-group-item"><a [routerLink]="['/quests']"class="text-decoration-none">Quests</a></li>
+      <li class="list-group-item"><a [routerLink]="['/forum']" class="text-decoration-none">Foro</a></li>
+      <li class="list-group-item"><a [routerLink]="['/papercraft']" class="text-decoration-none">Papercraft</a></li>
+      <li class="list-group-item"><a [routerLink]="['/models']" class="text-decoration-none">Modelos</a></li>
     </ul>
   </ul>
 </div>

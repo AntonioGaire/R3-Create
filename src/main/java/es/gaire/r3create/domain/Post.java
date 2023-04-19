@@ -47,7 +47,7 @@ public class Post {
             name="post_category",
             joinColumns = @JoinColumn(name = "id_post", referencedColumnName = "id_post"),
             inverseJoinColumns = @JoinColumn(name= "id_category", referencedColumnName = "id_category"))
-    Set<Category> categories = new HashSet<>();
+    Set<Category> categories;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "FK_POST_USER"))
