@@ -1,0 +1,38 @@
+<section class="justify-content-center d-flex">
+  <main class="justify-content-center container-xl row">
+    <aside class="row d-none d-md-flex col-xl-3 col-sm-5">
+      <app-model-side-menu></app-model-side-menu>
+    </aside>
+
+    <div class="col-12 col-sm-7 col-lg-9 p-0 text-decoration-none row">
+      <div *ngFor="let post of posts" class="col-12 col-sm-6 col-lg-4 p-0 text-decoration-none">
+        <article class="card" [routerLink]="['/home/', post.idPost  ]">
+          <img [src]=" post.images[0].src">
+          <section class="card-body">
+            <H5 CLASS="card-title">{{ post.title }}</H5>
+            <section class="d-flex flex-row border border-dark justify-content-center">
+              <div class="d-flex justify-content-center p-2">
+                <div class="rounded-circle" style="height: 50px; width: 50px;background-size: cover; background-image: url({{ post.user.pfp }});"></div>
+              </div>
+              <section class="d-flex flex-row justify-content-center align-items-center flex-grow-1">
+                <p class="h3 align-middle mb-0 p-2">{{ post.kudos }}</p>
+                <i class="fa-solid fa-heart fa-2x"></i>
+              </section>
+              <section class="d-flex flex-row justify-content-center align-items-center flex-grow-1" *ngIf="post.recompensa>0; else noreward">
+                <p class="h3 align-middle mb-0 p-2">{{ post.recompensa }}</p>
+                <i class="fa-solid fa-euro-sign fa-2x"></i>
+              </section>
+              <ng-template #noreward>
+                <section class="d-flex flex-row justify-content-center align-items-center flex-grow-1">
+                  <p class="h3 align-middle mb-0 p-2">{{ post.comments.length }}</p>
+                  <i class="fa-regular fa-message fa-2x"></i>
+                </section>
+              </ng-template>
+            </section>
+          </section>
+        </article>
+      </div>
+    </div>
+
+  </main>
+</section>

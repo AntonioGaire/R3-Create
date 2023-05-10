@@ -1,0 +1,45 @@
+
+  <div id="topPosters" class="card my-2">
+    <h4 class="card-title text-center p-2 border rounded-top border-dark"> Top Posters </h4>
+    <ul class="card-body mb-0" *ngFor="let topUser of topUsers; let i = index">
+      <li class="d-flex flex-row align-items-center justify-content-between list-style-none border-bottom pb-2">
+        <div style="height: 50px; width: 50px;background-size: cover; background-image: url({{ topUser.pfp }});"></div>
+        <h5 class="text-center"> {{ topUser.username }} </h5>
+        <span class="badge badge-primary badge-pill bg-primary">nº {{ i+1 }} </span>
+      </li>
+    </ul>
+  </div>
+
+  <div id="topTags" class="card my-2">
+    <h4 class="card-title text-center p-2 border rounded-top border-dark"> Top Tags</h4>
+    <ul class="card-body mb-0">
+      <li class="d-flex flex-row align-items-center justify-content-between list-style-none border-bottom pb-2" *ngFor="let topCategory of topCategories; let i = index">
+        <span class="fs-5 m-2 badge badge-primary badge-pill bg-secondary">{{ topCategory.name }}</span>
+        <span class="badge badge-primary badge-pill bg-primary">nº {{ i+1 }} </span>
+      </li>
+    </ul>
+  </div>
+
+  <ul class="list-group">
+
+    <li class="list-group-item">
+      <h4 class="h4 pt-2 justify-content-between align-items-center d-flex">Categoría</h4>
+      <ul class="list-group"  *ngFor="let category of categoriesDTO">
+        <li class="list-group-item d-flex flex-row align-items-center justify-content-between">
+          {{ category.category.name}}
+          <span class="badge badge-primary badge-pill bg-primary align-content-end"> {{ category.nofPosts }} </span>
+        </li>
+      </ul>
+    </li>
+
+    <li class="list-group-item ">
+      <h4 class="h4 pt-2 justify-content-between align-items-center d-flex">Popularidad</h4>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <h5 class="h5 pt-2 justify-content-between align-items-center d-flex">Kudos <input type="text" placeholder="0" class="rounded col-5"></h5>
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+

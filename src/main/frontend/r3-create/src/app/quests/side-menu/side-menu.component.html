@@ -1,0 +1,33 @@
+
+  <ul class="list-group">
+
+    <li class="list-group-item">
+      <h4 class="h4 pt-2 justify-content-between align-items-center d-flex">Típo</h4>
+      <ul class="list-group" *ngFor="let type of types">
+        <li class="list-group-item">
+          {{ type.name }}
+        </li>
+      </ul>
+    </li>
+
+    <li class="list-group-item">
+      <h4 class="h4 pt-2 justify-content-between align-items-center d-flex">Categoría</h4>
+      <ul class="list-group"  *ngFor="let category of categoriesDTO">
+        <li class="list-group-item d-flex flex-row align-items-center justify-content-between">
+          {{ category.category.name}}
+          <span class="badge badge-primary badge-pill bg-primary align-content-end"> {{ category.nofPosts }} </span>
+        </li>
+      </ul>
+    </li>
+
+    <li class="list-group-item">
+      <h4 class="h4 pt-2 justify-content-between align-items-center d-flex">Popularidad</h4>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <h5 class="h5 pt-2 justify-content-between align-items-center d-flex">Kudos <input type="text" placeholder="0" class="rounded col-5"></h5>
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+
