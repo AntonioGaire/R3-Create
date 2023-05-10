@@ -1,6 +1,7 @@
 package es.gaire.r3create.service;
 
 import es.gaire.r3create.domain.Post;
+import es.gaire.r3create.domain.PostType;
 import es.gaire.r3create.exception.PostNotFoundException;
 import es.gaire.r3create.repository.PostRepository;
 import org.springframework.stereotype.Service;
@@ -20,4 +21,6 @@ public class PostService {
     }
 
     public Post find(Long id) {return this.postRepository.findById(id).orElseThrow(() -> new PostNotFoundException(id));}
+
+    public List<Post> allByType(Long id){ return this.postRepository.findAllByPostType(id);}
 }

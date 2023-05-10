@@ -115,11 +115,21 @@
     </div>
     <ul class="list-group my-2 rounded">
       <li class="list-group-item"><a [routerLink]="['/home']" class="text-decoration-none">Inicio</a></li>
-      <li class="list-group-item"><a [routerLink]="['/quests']"class="text-decoration-none">Quests</a></li>
+      <li class="list-group-item"><a [routerLink]="['/quests']" class="text-decoration-none">Quests</a></li>
       <li class="list-group-item"><a [routerLink]="['/forum']" class="text-decoration-none">Foro</a></li>
       <li class="list-group-item"><a [routerLink]="['/papercraft']" class="text-decoration-none">Papercraft</a></li>
       <li class="list-group-item"><a [routerLink]="['/models']" class="text-decoration-none">Modelos</a></li>
     </ul>
   </ul>
 </div>
+  <section class="d-none d-md-flex justify-content-center bg-light">
+    <nav class="container-xl row d-flex justify-content-center p-2">
+      <a [routerLink]="['/quests']" class="text-decoration-none text-center col-sm-2 h4">Quests</a>
+      <a [routerLink]="['/forum']" class="text-decoration-none text-center col-sm-2 h4">Foro</a>
+      <a [routerLink]="['/home']" class="text-decoration-none text-center col-sm-2 h4">Inicio</a>
+      <a [routerLink]="['/papercraft']" class="text-decoration-none text-center col-sm-2 h4">Papercraft</a>
+      <a [routerLink]="['/models']" class="text-decoration-none text-center col-sm-2 h4">Modelos</a>
+    </nav>
+  </section>
+
 </header>

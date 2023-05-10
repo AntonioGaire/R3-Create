@@ -35,9 +35,14 @@ public class Image {
     @JsonIgnore
     private Post post;
 
-    @Column(name = "created_date")
-    private Date createdDate;
+    @Column(name = "deleted", columnDefinition = "boolean default false")
+    @JsonIgnore
+    private boolean deleted;
+    @Column(name = "creation_date")
+    @JsonIgnore
+    private Date creationDate;
 
-    @Column(name = "modified_date")
-    private Date modifiedDate;
+    @Column(name = "last_modification_date")
+    @JsonIgnore
+    private Date lastModificationDate;
 }

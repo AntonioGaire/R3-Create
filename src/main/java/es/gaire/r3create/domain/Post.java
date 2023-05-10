@@ -18,7 +18,7 @@ import java.util.Set;
 @Table(name = "post")
 
 @Entity
-
+@Builder
 public class Post {
 
     @Id
@@ -29,7 +29,7 @@ public class Post {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     @Column(name = "recompensa")
@@ -42,12 +42,12 @@ public class Post {
     @JoinColumn(name = "id_posttype", nullable = false, foreignKey = @ForeignKey(name = "FK_POSTTYPE"))
     private PostType postType;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name="post_category",
             joinColumns = @JoinColumn(name = "id_post", referencedColumnName = "id_post"),
             inverseJoinColumns = @JoinColumn(name= "id_category", referencedColumnName = "id_category"))
-    Set<Category> categories;
+    private List<Category> categories;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "FK_POST_USER"))
@@ -59,9 +59,15 @@ public class Post {
     @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
     private List<Comment> comments;
 
-    @Column(name = "created_date")
-    private Date createdDate;
+    @Column(name = "deleted", columnDefinition = "boolean default false")
+    @JsonIgnore
+    private boolean deleted;
 
-    @Column(name = "modified_date")
-    private Date modifiedDate;
+    @Column(name = "creation_date")
+    @JsonIgnore
+    private Date creationDate;
+
+    @Column(name = "last_modification_date")
+    @JsonIgnore
+    private Date lastModificationDate;
 }

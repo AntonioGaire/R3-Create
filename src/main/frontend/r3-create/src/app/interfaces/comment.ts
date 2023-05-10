@@ -9,7 +9,4 @@ export interface Comment {
 
   parentComment: Comment;
   comments: Comment[];
-
-  createdDate: Date;
-  modifiedDate: Date;
 }

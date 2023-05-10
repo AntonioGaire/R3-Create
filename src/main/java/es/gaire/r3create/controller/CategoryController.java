@@ -1,12 +1,12 @@
 package es.gaire.r3create.controller;
 
 import es.gaire.r3create.domain.Category;
-import es.gaire.r3create.domain.Post;
+import es.gaire.r3create.dto.CategoryDTO;
 import es.gaire.r3create.service.CategoryService;
-import es.gaire.r3create.service.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -20,10 +20,22 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping(value = {"","/"})
+    @GetMapping(value = {"","/"}, params = {"!top"})
     public List<Category> all(){
-        log.info("Accediendo a todos los categorys");
+        log.info("Accediendo a todos los categories");
         return this.categoryService.all();
+    }
+
+    @GetMapping(value = {"","/"}, params = {"top"})
+    public List<Category> top(@RequestParam("top") int top){
+        log.info("Accediendo a top categories");
+        return this.categoryService.topCategories(top);
+    }
+
+    @GetMapping(value = {"/dto","/dto/"})
+    public List<CategoryDTO> categoryDto(){
+        log.info("Accediendo a top categories");
+        return this.categoryService.findAllCategoriesWNofPosts();
     }
 
     @GetMapping("/{id}")

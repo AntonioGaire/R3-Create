@@ -5,9 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @AllArgsConstructor
@@ -26,14 +24,19 @@ public class Category {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "icon")
+    private String icon;
+
     @ManyToMany(mappedBy = "categories")
     @JsonIgnore
-    Set<Post> posts = new HashSet<>();
+    List<Post> posts = new ArrayList<>();
 
-    @Column(name = "created_date")
-    private Date createdDate;
+    @Column(name = "creation_date")
+    @JsonIgnore
+    private Date creationDate;
 
-    @Column(name = "modified_date")
-    private Date modifiedDate;
+    @Column(name = "last_modification_date")
+    @JsonIgnore
+    private Date lastModificationDate;
 
 }

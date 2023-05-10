@@ -30,7 +30,6 @@ public class User {
     private String pfp;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private List<Post> posts;
 
@@ -44,9 +43,15 @@ public class User {
     @JsonIgnore
     private AccessLevel accessLevel;
 
-    @Column(name = "created_date")
-    private Date createdDate;
+    @Column(name = "deleted", columnDefinition = "boolean default false")
+    @JsonIgnore
+    private boolean deleted;
 
-    @Column(name = "modified_date")
-    private Date modifiedDate;
+    @Column(name = "creation_date")
+    @JsonIgnore
+    private Date creationDate;
+
+    @Column(name = "last_modification_date")
+    @JsonIgnore
+    private Date lastModificationDate;
 }

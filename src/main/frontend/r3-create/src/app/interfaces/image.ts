@@ -5,6 +5,4 @@ export interface Image {
   alt: string;
   src:string;
 
-  createdDate: Date;
-  modifiedDate: Date;
 }

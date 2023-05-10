@@ -6,7 +6,4 @@ export interface User {
   username: string;
   pfp: string;
   accessLevel: AccessLevel;
-
-  createdDate: Date;
-  modifiedDate: Date;
 }

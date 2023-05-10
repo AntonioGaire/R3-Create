@@ -1,5 +1,6 @@
 package es.gaire.r3create.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,9 +30,11 @@ public class AccessLevel {
     @Column(name = "deprecated", columnDefinition = "boolean default false")
     private Boolean deprecated;
 
-    @Column(name = "created_date")
-    private Date createdDate;
+    @Column(name = "creation_date")
+    @JsonIgnore
+    private Date creationDate;
 
-    @Column(name = "modified_date")
-    private Date modifiedDate;
+    @Column(name = "last_modification_date")
+    @JsonIgnore
+    private Date lastModificationDate;
 }

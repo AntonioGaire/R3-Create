@@ -1,15 +1,52 @@
 <main class="justify-content-center container-xl">
 
   <section id="modelimage" class="card border-0">
-    <img src="{{ post.images[0].src }}" style="max-height: 50vh; object-fit: contain;">
-    <h2 class="card-title"> {{ post.title }} </h2>
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false" *ngIf="post.images.length>1; else onlyone">
+      <div class="carousel-inner">
+        <div class="carousel-item active justify-content-center">
+          <div class="d-flex justify-content-center">
+            <img src="{{post.images[0].src}}" class="mx-auto p-0 w-75" alt="{{post.images[0].src}}}">
+          </div>
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="bg-dark-subtle p-1">{{post.images[0].title}}</h5>
+          </div>
+        </div>
+
+        <div class="carousel-item" *ngFor="let img of post.images | slice:1">
+          <div class="d-flex justify-content-center">
+            <img src="{{img.src}}" class="mx-auto p-0 w-75" alt="{{img.src}}">
+          </div>
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="bg-dark-subtle p-1">{{img.title}}</h5>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev text-bg-dark" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next text-bg-dark" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <ng-template #onlyone>
+      <div class="position-relative d-flex justify-content-center">
+        <img src="{{post.images[0].src}}" class="mx-auto p-0 w-75" style="z-index: 0" alt="{{post.images[0].src}}}">
+        <h5 class="bg-dark-subtle p-1 carousel-caption position-absolute bottom-0">{{post.images[0].title}}</h5>
+      </div>
+    </ng-template>
+
+    <h2 class="card-title pt-2"> {{ post.title }} </h2>
     <h3>Autor : {{ post.user.username }}</h3>
     <h3>Kudos : {{ post.kudos }}</h3>
+    <h3 *ngIf=" post.recompensa !=0 " >Recompensa: {{post.recompensa}} €</h3>
     <section class="row d-flex justify-content-around justify-content-md-start">
       <h4 class="pr-2 col-12 col-md-2 align-self-center">Tags: </h4>
-      <div *ngFor="let category of post.categories ">
-        <button class="btn btn-secondary m-2 col-5 col-md-2 col-xl-1">{{ category.name }}</button>
-      </div>
+      <button *ngFor="let category of post.categories" class="btn btn-secondary m-2 col-5 col-md-2 col-xl-1">{{ category.name }}</button>
     </section>
     <h5 class="pt-3">Descripción:</h5>
     <p class="card-text mb-3"> {{ post.description }} </p>

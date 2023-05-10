@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Post} from "../../interfaces/post";
 import {PostDetailService} from "./post-detail.service";
 import {ActivatedRoute} from "@angular/router";
@@ -8,7 +8,7 @@ import {ActivatedRoute} from "@angular/router";
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.css']
 })
-export class PostDetailComponent {
+export class PostDetailComponent implements OnInit{
   post !: Post;
   responseIds :number[] = [];
 

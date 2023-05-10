@@ -1,16 +1,16 @@
-insert into accesslevel (name, created_date, modified_date)
+insert into accesslevel (name, creation_date, last_modification_date)
 values ('admin', current_timestamp ,current_timestamp ),
        ('moderator', current_timestamp ,current_timestamp ),
        ('creator', current_timestamp ,current_timestamp ),
        ('standard', current_timestamp ,current_timestamp );
 
 
-insert into posttype (name, created_date, modified_date)
+insert into posttype (name, creation_date, last_modification_date)
 values ('papercraft',current_timestamp ,current_timestamp ),
        ('model',current_timestamp ,current_timestamp ),
        ('quest',current_timestamp ,current_timestamp );
 
-insert into category (name, created_date, modified_date)
+insert into category (name, creation_date, last_modification_date)
 values ('halloween',current_timestamp ,current_timestamp ),
        ('dog',current_timestamp ,current_timestamp ),
        ('fish',current_timestamp ,current_timestamp ),
@@ -22,21 +22,21 @@ values ('halloween',current_timestamp ,current_timestamp ),
        ('vehicle',current_timestamp ,current_timestamp ),
        ('farm',current_timestamp ,current_timestamp );
 
-insert into user (username, id_accesslevel, created_date, modified_date)
+insert into user (username, id_accesslevel, creation_date, last_modification_date)
 values ('user1', 1, current_timestamp, current_timestamp),
        ('user2', 1, current_timestamp, current_timestamp),
        ('user3', 2, current_timestamp, current_timestamp),
        ('user4', 3, current_timestamp, current_timestamp),
        ('user5', 4, current_timestamp, current_timestamp);
 
-insert into post (title, description, id_posttype, id_user, created_date, modified_date)
+insert into post (title, description, id_posttype, id_user, creation_date, last_modification_date)
 values ('Post 1', 'Descripción del primer post', 1, 1, current_timestamp , current_timestamp),
        ('Post 2', 'Descripción del segundo post', 2, 2, current_timestamp , current_timestamp),
        ('Post 3', 'Descripción del tercer post', 3, 3, current_timestamp , current_timestamp),
        ('Post 4', 'Descripción del cuarto post', 1, 4, current_timestamp , current_timestamp),
        ('Post 5', 'Descripción del quinto post', 2, 1, current_timestamp , current_timestamp);
 
-insert into image (title, alt, src, id_post, created_date, modified_date)
+insert into image (title, alt, src, id_post, creation_date, last_modification_date)
 values ('alpaca','Image of a low poly alpaca','https://drive.google.com/uc?id=1vAzO7iog5gcxMFQ2B-pv8GBcqn88lgGK', 1, current_timestamp, current_timestamp),
        ('caballo','Image of a low poly horse','https://drive.google.com/uc?id=1QUyWI2GJtmlARbG5aHfEC8H5sR0oPLCr', 2, current_timestamp, current_timestamp),
        ('caballo-cr','Cropped image of a low poly horse','https://drive.google.com/uc?id=1zuxs5YLkCV6fZt52022F00hKGf9tgHtY', 2, current_timestamp, current_timestamp),
@@ -54,7 +54,7 @@ values (1,10),
        (4,10),
        (5,2);
 
-insert into comment (description, id_comment_sr, id_post, created_date, modified_date)
+insert into comment (description, id_comment_sr, id_post, creation_date, last_modification_date)
 values ('Comentario al primer post', null, 1, current_timestamp, current_timestamp),
        ('Segundo comentario al primer post', null, 1, current_timestamp, current_timestamp),
        ('Comentario al segundo post', null, 2, current_timestamp, current_timestamp),
@@ -63,19 +63,26 @@ values ('Comentario al primer post', null, 1, current_timestamp, current_timesta
        ('Comentario al tercer post', null, 3, current_timestamp, current_timestamp),
        ('Comentario al cuarto post', null, 4, current_timestamp, current_timestamp);
 
-insert into accesslevel (name, created_date, modified_date)
+               String[] mfn = {"Wade", "Dave", "Seth", "Ivan", "Riley", "Gilbert", "Jorge", "Dan", "Brian", "Roberto", "Ramon", "Miles", "Liam", "Nathaniel", "Ethan", "Lewis", "Milton", "Claude", "Joshua", "Glen", "Harvey", "Blake", "Antonio", "Connor", "Julian"};
+
+               String[] ffn = {"Daisy", "Deborah", "Isabel", "Stella", "Debra", "Beverly", "Vera", "Angela", "Lucy", "Lauren", "Janet", "Loretta", "Tracey", "Beatrice", "Sabrina", "Melody", "Chrysta", "Christina", "Vicki", "Molly", "Alison", "Miranda", "Stephanie", "Leona", "Katrina", "Mila", "Teresa", "Gabriela", "Ashley", "Nicole", "Valentina", "Rose", "Juliana", "Alice", "Kathie", "Gloria", "Luna", "Phoebe", "Angelique", "Graciela", "Gemma", "Katelynn", "Danna", "Luisa", "Julie", "Olive", "Carolina", "Harmony", "Hanna", "Anabelle"};
+
+               String[] sn = {"Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker", "Young", "Allen", "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores", "Green", "Adams", "Nelson", "Baker", "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts"};
+
+
+insert into accesslevel (name, creation_date, last_modification_date)
 values ('admin', current_timestamp ,current_timestamp ),
        ('moderator', current_timestamp ,current_timestamp ),
        ('creator', current_timestamp ,current_timestamp ),
        ('standard', current_timestamp ,current_timestamp );
 
 
-insert into posttype (name, created_date, modified_date)
+insert into posttype (name, creation_date, last_modification_date)
 values ('papercraft',current_timestamp ,current_timestamp ),
        ('model',current_timestamp ,current_timestamp ),
        ('quest',current_timestamp ,current_timestamp );
 
-insert into category (name, created_date, modified_date)
+insert into category (name, creation_date, last_modification_date)
 values ('halloween',current_timestamp ,current_timestamp ),
        ('dog',current_timestamp ,current_timestamp ),
        ('fish',current_timestamp ,current_timestamp ),
@@ -87,21 +94,21 @@ values ('halloween',current_timestamp ,current_timestamp ),
        ('vehicle',current_timestamp ,current_timestamp ),
        ('farm',current_timestamp ,current_timestamp );
 
-insert into user (username, id_accesslevel, created_date, modified_date)
+insert into user (username, id_accesslevel, creation_date, last_modification_date)
 values ('user1', 1, current_timestamp, current_timestamp),
        ('user2', 1, current_timestamp, current_timestamp),
        ('user3', 2, current_timestamp, current_timestamp),
        ('user4', 3, current_timestamp, current_timestamp),
        ('user5', 4, current_timestamp, current_timestamp);
 
-insert into post (title, description,kudos, id_posttype, id_user, created_date, modified_date)
+insert into post (title, description,kudos, id_posttype, id_user, creation_date, last_modification_date)
 values ('Post 1', 'Descripción del primer post', 50, 1, 1, current_timestamp , current_timestamp),
        ('Post 2', 'Descripción del segundo post', 10, 2, 2, current_timestamp , current_timestamp),
        ('Post 3', 'Descripción del tercer post', 500, 3, 3, current_timestamp , current_timestamp),
        ('Post 4', 'Descripción del cuarto post', 5, 1, 4, current_timestamp , current_timestamp),
        ('Post 5', 'Descripción del quinto post', 12, 2, 1, current_timestamp , current_timestamp);
 
-insert into image (title, alt, src, id_post, created_date, modified_date)
+insert into image (title, alt, src, id_post, creation_date, last_modification_date)
 values ('alpaca','Image of a low poly alpaca','https://drive.google.com/uc?id=1vAzO7iog5gcxMFQ2B-pv8GBcqn88lgGK', 1, current_timestamp, current_timestamp),
        ('caballo','Image of a low poly horse','https://drive.google.com/uc?id=1QUyWI2GJtmlARbG5aHfEC8H5sR0oPLCr', 2, current_timestamp, current_timestamp),
        ('caballo-cr','Cropped image of a low poly horse','https://drive.google.com/uc?id=1zuxs5YLkCV6fZt52022F00hKGf9tgHtY', 2, current_timestamp, current_timestamp),
@@ -119,7 +126,7 @@ values (1,10),
        (4,10),
        (5,2);
 
-insert into comment (text, kudos, id_user, id_comment_sr, id_post, created_date, modified_date)
+insert into comment (text, kudos, id_user, id_comment_sr, id_post, creation_date, last_modification_date)
 values ('Comentario al primer post', 50, 1, null, 1, current_timestamp, current_timestamp),
        ('Segundo comentario al primer post', 5, 2, null, 1, current_timestamp, current_timestamp),
        ('Comentario al segundo post', 500, 3, null, 2, current_timestamp, current_timestamp),

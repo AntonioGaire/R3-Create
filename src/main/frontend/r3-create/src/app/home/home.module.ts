@@ -8,14 +8,17 @@ import {RouterLink} from "@angular/router";
 
 
 @NgModule({
-  declarations: [
-    TagSelectorComponent,
-    PostsComponent
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    RouterLink
-  ]
+    declarations: [
+        TagSelectorComponent,
+        PostsComponent
+    ],
+    exports: [
+        PostsComponent
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        RouterLink
+    ]
 })
 export class HomeModule { }

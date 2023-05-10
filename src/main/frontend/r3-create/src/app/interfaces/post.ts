@@ -17,7 +17,4 @@ export interface Post {
   user: User;
   images : Image[];
   comments: Comment[];
-
-  createdDate: Date;
-  modifiedDate: Date;
 }

@@ -26,4 +26,28 @@ public class PostController {
 
     @GetMapping("/{id}")
     public Post find(@PathVariable("id") Long id) { return this.postService.find(id);}
+
+    @GetMapping(value = {"papercraft","papercraft/"})
+    public List<Post> allPapercraft(){
+        log.info("Accediendo a todos los posts");
+        return this.postService.allByType(1L);
+    }
+
+    @GetMapping(value = {"models","models/"})
+    public List<Post> allModels(){
+        log.info("Accediendo a todos los posts");
+        return this.postService.allByType(2L);
+    }
+
+    @GetMapping(value = {"quests","quests/"})
+    public List<Post> allQuests(){
+        log.info("Accediendo a todos los posts");
+        return this.postService.allByType(3L);
+    }
+
+    @GetMapping(value = {"forum","forum/"})
+    public List<Post> allForumPosts(){
+        log.info("Accediendo a todos los posts");
+        return this.postService.allByType(4L);
+    }
 }
