@@ -1,1 +1,5 @@
-<p>tag-selector works!</p>
+
+<section id="menu" class="row mb-4 justify-content-center">
+  <a class="text-decoration-none col-2 col-sm-1 align-self-center" *ngFor="let category of categories"
+     [routerLink]="" [queryParams]="{categories:category.name}"><i [routerLink]="['/.']" [queryParams]="{categories:category.name}" class="{{category.icon}}"></i></a>
+</section>

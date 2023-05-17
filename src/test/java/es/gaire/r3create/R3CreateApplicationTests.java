@@ -7,6 +7,10 @@ import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Rollback;
 
 import java.math.BigDecimal;
@@ -187,7 +191,7 @@ class R3CreateApplicationTests {
                         images.addAll(papercraftImage(s));
                     } else if ("model".equals(c)) {
                         images.addAll(modelImage(s));
-                    }else if ("quest".equals(papercraftImage(s))){
+                    }else if ("quest".equals(c)){
                         images.addAll(bothImage(s));
                     }
                 }else{
@@ -229,6 +233,18 @@ class R3CreateApplicationTests {
 
         commentRepository.findAll().forEach(c -> System.out.println(c.getPost().getIdPost() + " | " + c.getUser().getUsername() +  " | " + c.getText()));
 
+    }
+
+    @Test
+    void pruebaRepo(){
+        String categories[] = {"halloween", "dog"};
+
+        Pageable paginated = PageRequest.of(0, 5, Sort.by("idPost").ascending());
+        Page<Post> page = this.postRepository.findAllByPostTypeAndCategoriesPaginated("quest", categories, paginated);
+
+        System.out.println(page.getTotalElements() + " | " + page.getTotalPages() + " | " + page.getContent().size());
+
+        page.getContent().forEach(s -> System.out.println(s.getIdPost()  + " | " + s.getTitle()));
     }
 
     List<Image> papercraftImage(Post post){

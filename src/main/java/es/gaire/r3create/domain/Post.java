@@ -38,7 +38,7 @@ public class Post {
     @Column(name = "kudos")
     private BigInteger kudos;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_posttype", nullable = false, foreignKey = @ForeignKey(name = "FK_POSTTYPE"))
     private PostType postType;
 

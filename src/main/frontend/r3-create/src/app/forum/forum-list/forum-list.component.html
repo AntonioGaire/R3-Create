@@ -1,31 +1,35 @@
 <section class="justify-content-center d-flex">
   <main class="justify-content-center container-xl row">
-    <div *ngFor="let post of posts" class="col-12 col-sm-6 col-lg-4 p-0 text-decoration-none">
-      <article class="card" [routerLink]="['/home/', post.idPost  ]">
-        <section class="d-flex flex-row justify-content-between p-2 align-items-center border border-dark rounded-top">
-          <i class="fa-solid fa-user fa-3x"></i>
-          <h3> {{ post.user.username }} </h3>
-        </section>
-        <section class="d-flex">
-          <h4 class="card-title align-self-center m-2 me-auto"> {{ post.title }} </h4>
-          <button *ngFor="let category of post.categories" class="btn btn-secondary m-2 col-5 col-md-2 col-xl-1">{{ category.name }}</button>
-        </section>
-        <section *ngIf="post.images.length>0; else puretext" style="height: 360px; background-position: center center;background-size: cover;" [style.background-image]="'url(' + post.images[0] + ')'">
-        </section>
-        <ng-template #puretext class="p-2 fs-2">
-          {{ post.description }}
-        </ng-template>
-        <section class="border border-dark rounded-bottom row m-0">
-          <section class="col-6 d-flex flex-row align-items-center justify-content-around border-end border-dark  p-2">
-            <i class="fa-regular fa-message fa-2x"></i>
-            <p class="text-center m-0 fs-5">{{ post.comments.length }} comments</p>
+    <div class="col-xl-9 col-sm-7">
+      <div *ngFor="let post of posts" class="my-3">
+        <article class="card" [routerLink]="['/home/', post.idPost  ]">
+          <section class="d-flex flex-row justify-content-between p-2 align-items-center border border-dark rounded-top">
+            <div class="rounded-circle" style="height: 50px; width: 50px;background-size: cover; background-image: url({{ post.user.pfp }});"></div>
+            <h3> {{ post.user.username }} </h3>
           </section>
-          <section class="col-6 d-flex flex-row align-items-center justify-content-around">
-            <p class="text-center m-0 fs-5">{{ post.kudos }} kudos</p>
-            <i class="fa-solid fa-arrow-up fa-2x"></i>
+          <section class="d-flex">
+            <h4 class="card-title align-self-center m-2 me-auto"> {{ post.title }} </h4>
+            <i *ngFor="let category of post.categories" class="{{category.icon}} p-1"></i>
           </section>
-        </section>
-      </article>
+          <section *ngIf="post.images.length>0; else puretext" style="height: 360px; background-position: center center;background-size: cover;" [style.background-image]="'url(' + post.images[0].src + ')'">
+          </section>
+          <ng-template #puretext class="p-2 fs-2">
+            <p class="p-2 h3 justi fw-light ">
+              {{post.description}}
+            </p>
+          </ng-template>
+          <section class="border border-dark rounded-bottom row m-0">
+            <section class="col-6 d-flex flex-row align-items-center justify-content-around border-end border-dark  p-2">
+              <i class="fa-regular fa-message fa-2x"></i>
+              <p class="text-center m-0 fs-5">{{ post.comments.length }} comments</p>
+            </section>
+            <section class="col-6 d-flex flex-row align-items-center justify-content-around">
+              <p class="text-center m-0 fs-5">{{ post.kudos }} kudos</p>
+              <i class="fa-solid fa-arrow-up fa-2x"></i>
+            </section>
+          </section>
+        </article>
+      </div>
     </div>
 
     <aside class="row d-none d-md-flex col-xl-3 col-sm-5">

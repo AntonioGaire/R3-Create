@@ -4,6 +4,9 @@ import { TagSelectorComponent } from './tag-selector/tag-selector.component';
 import { PostsComponent } from './posts/posts.component';
 import { BrowserModule } from "@angular/platform-browser";
 import {RouterLink} from "@angular/router";
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {MatCardModule} from "@angular/material/card";
+import {CoreModule} from "../core/core.module";
 
 
 
@@ -18,7 +21,10 @@ import {RouterLink} from "@angular/router";
     imports: [
         CommonModule,
         BrowserModule,
-        RouterLink
+        RouterLink,
+        InfiniteScrollModule,
+        MatCardModule,
+        CoreModule
     ]
 })
 export class HomeModule { }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ForumListComponent } from './forum-list/forum-list.component';
 import { ForumSideMenuComponent } from './forum-side-menu/forum-side-menu.component';
 import {RouterLink} from "@angular/router";
+import {CoreModule} from "../core/core.module";
 
 
 
@@ -13,7 +14,8 @@ import {RouterLink} from "@angular/router";
   ],
     imports: [
         CommonModule,
-        RouterLink
+        RouterLink,
+        CoreModule
     ]
 })
 export class ForumModule { }

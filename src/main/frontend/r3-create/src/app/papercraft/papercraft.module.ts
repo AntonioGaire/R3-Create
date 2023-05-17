@@ -6,6 +6,7 @@ import {QuestsModule} from "../quests/quests.module";
 import { PapercraftSideMenuComponent } from './papercraft-side-menu/papercraft-side-menu.component';
 import {HomeModule} from "../home/home.module";
 import {BrowserModule} from "@angular/platform-browser";
+import {CoreModule} from "../core/core.module";
 
 
 
@@ -14,13 +15,14 @@ import {BrowserModule} from "@angular/platform-browser";
     PaperfraftListComponent,
     PapercraftSideMenuComponent
   ],
-  imports: [
-    CommonModule,
-    RouterLink,
-    QuestsModule,
-    HomeModule,
-    BrowserModule
-  ],
+    imports: [
+        CommonModule,
+        RouterLink,
+        QuestsModule,
+        HomeModule,
+        BrowserModule,
+        CoreModule
+    ],
   exports: [
     PaperfraftListComponent,
     PapercraftSideMenuComponent

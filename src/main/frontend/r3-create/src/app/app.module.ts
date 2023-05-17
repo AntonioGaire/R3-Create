@@ -13,6 +13,8 @@ import {PapercraftModule} from "./papercraft/papercraft.module";
 import {ModelsModule} from "./models/models.module";
 import {ForumModule} from "./forum/forum.module";
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent
@@ -28,7 +30,9 @@ import {ForumModule} from "./forum/forum.module";
       QuestsModule,
       PapercraftModule,
       ModelsModule,
-      ForumModule
+      ForumModule,
+      InfiniteScrollModule,
+      MatCardModule
     ],
   providers: [],
   bootstrap: [AppComponent]

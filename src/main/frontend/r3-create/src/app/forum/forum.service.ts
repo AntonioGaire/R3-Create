@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {Category} from "../interfaces/category";
 import {catchError} from "rxjs/operators";
-import {PostType} from "../interfaces/post-type";
 import {Post} from "../interfaces/post";
 import {User} from "../interfaces/user";
 import {CategoryDTO} from "../interfaces/category-dto";
@@ -13,7 +12,7 @@ import {CategoryDTO} from "../interfaces/category-dto";
 })
 export class ForumService {
   private apiURLCat = "http://localhost:8080/categories";
-  private apiURLFor = "http://localhost:8080/posts/forum_posts";
+  private apiURLFor = "http://localhost:8080/posts/forum";
   private apiURLUse = "http://localhost:8080/users";
 
   constructor(private httpClient: HttpClient) {

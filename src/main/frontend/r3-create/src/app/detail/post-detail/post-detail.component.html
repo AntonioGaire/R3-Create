@@ -34,9 +34,16 @@
     </div>
 
     <ng-template #onlyone>
-      <div class="position-relative d-flex justify-content-center">
+      <div class="position-relative d-flex justify-content-center" *ngIf="post.images.length==1; else noimage">
         <img src="{{post.images[0].src}}" class="mx-auto p-0 w-75" style="z-index: 0" alt="{{post.images[0].src}}}">
         <h5 class="bg-dark-subtle p-1 carousel-caption position-absolute bottom-0">{{post.images[0].title}}</h5>
+      </div>
+    </ng-template>
+    <ng-template #noimage>
+      <div class="row justify-content-center col-12 p-4">
+        <p class="card col-md-8 p-2 h3 fw-light ">
+          {{post.description}}
+        </p>
       </div>
     </ng-template>
 
@@ -48,8 +55,11 @@
       <h4 class="pr-2 col-12 col-md-2 align-self-center">Tags: </h4>
       <button *ngFor="let category of post.categories" class="btn btn-secondary m-2 col-5 col-md-2 col-xl-1">{{ category.name }}</button>
     </section>
-    <h5 class="pt-3">Descripción:</h5>
-    <p class="card-text mb-3"> {{ post.description }} </p>
+
+    <div *ngIf="post.images.length>0">
+      <h5 class="pt-3">Descripción:</h5>
+      <p class="card-text mb-3"> {{ post.description }} </p>
+    </div>
 
     <section id="comments" class="my-4">
 
