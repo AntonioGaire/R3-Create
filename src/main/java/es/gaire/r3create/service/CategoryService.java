@@ -4,6 +4,7 @@ import es.gaire.r3create.domain.Category;
 import es.gaire.r3create.dto.CategoryDTO;
 import es.gaire.r3create.exception.CategoryNotFoundException;
 import es.gaire.r3create.repository.CategoryRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -32,4 +33,7 @@ public class CategoryService {
         return aux;
 
     }
+
+    @Transactional
+    public void delete(long category){categoryRepository.delete(categoryRepository.findById(category).get());}
 }

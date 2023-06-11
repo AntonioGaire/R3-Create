@@ -4,6 +4,7 @@ import { ForumListComponent } from './forum-list/forum-list.component';
 import { ForumSideMenuComponent } from './forum-side-menu/forum-side-menu.component';
 import {RouterLink} from "@angular/router";
 import {CoreModule} from "../core/core.module";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -15,7 +16,8 @@ import {CoreModule} from "../core/core.module";
     imports: [
         CommonModule,
         RouterLink,
-        CoreModule
+        CoreModule,
+        FormsModule
     ]
 })
 export class ForumModule { }

@@ -6,6 +6,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {HomeModule} from "../home/home.module";
 import {RouterLink} from "@angular/router";
 import {CoreModule} from "../core/core.module";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -19,7 +20,8 @@ import {CoreModule} from "../core/core.module";
         BrowserModule,
         HomeModule,
         RouterLink,
-        CoreModule
+        CoreModule,
+        FormsModule
     ],
   exports: [
     SideMenuComponent,

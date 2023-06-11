@@ -17,7 +17,7 @@
     <h4 class="h4 pt-2 justify-content-between align-items-center d-flex">Popularidad</h4>
     <ul class="list-group">
       <li class="list-group-item">
-        <h5 class="h5 pt-2 justify-content-between align-items-center d-flex">Kudos <input type="text" placeholder="0" class="rounded col-5"></h5>
+        <h5 class="h5 pt-2 justify-content-between align-items-center d-flex">Kudos <input type="text" placeholder="0" class="rounded col-5"  [ngModel]="kudos" (ngModelChange)="addKudos($event)" ></h5>
       </li>
     </ul>
   </li>

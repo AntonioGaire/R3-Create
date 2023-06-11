@@ -96,26 +96,34 @@ class R3CreateApplicationTests {
             }
 
             System.out.println(accessLevel.getName());
+            String username, pfp;
 
             if(rnd[0]==0){
-                userRepository.save(User.builder()
-                        .username(lorem.getNameFemale())
-                        .pfp(fpfp[rnd[1]])
-                        .accessLevel(accessLevel)
-                        .deleted(false)
-                        .creationDate(new Date())
-                        .lastModificationDate(new Date())
-                        .build());
+                username = lorem.getNameMale().concat(Integer.toString(rndInt(500)));
+                pfp=mpfp[rnd[1]];
             }else{
-                userRepository.save(User.builder()
-                        .username(lorem.getNameMale())
-                        .pfp(mpfp[rnd[1]])
-                        .accessLevel(accessLevel)
-                        .deleted(false)
-                        .creationDate(new Date())
-                        .lastModificationDate(new Date())
-                        .build());
+                username = lorem.getNameFemale().concat(Integer.toString(rndInt(500)));
+                pfp=fpfp[rnd[1]];
             }
+
+            Boolean inserted = true;
+
+            do {
+                inserted = true;
+                try {
+                    userRepository.save(User.builder()
+                            .username(username)
+                            .pfp(pfp)
+                            .accessLevel(accessLevel)
+                            .deleted(false)
+                            .creationDate(new Date())
+                            .lastModificationDate(new Date())
+                            .build());
+                } catch (Exception e) {
+                    inserted = false;
+                    username.concat(Integer.toString(rndInt(500)));
+                }
+            }while (!inserted);
 
         }
 
@@ -240,7 +248,7 @@ class R3CreateApplicationTests {
         String categories[] = {"halloween", "dog"};
 
         Pageable paginated = PageRequest.of(0, 5, Sort.by("idPost").ascending());
-        Page<Post> page = this.postRepository.findAllByPostTypeAndCategoriesPaginated("quest", categories, paginated);
+        Page<Post> page = this.postRepository.findAllByPostTypeAndCategoriesPaginated("quest", categories, 0, paginated);
 
         System.out.println(page.getTotalElements() + " | " + page.getTotalPages() + " | " + page.getContent().size());
 

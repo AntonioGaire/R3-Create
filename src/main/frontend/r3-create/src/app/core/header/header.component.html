@@ -5,15 +5,27 @@
   </section>
 
   <section id="searchbar" class="d-none rounded bg-light d-md-flex col-md-4 col-bg-6 flex-row align-self-center ">
-    <input type="text" placeholder="Busqueda" class=" rounded d-flex border-0 flex-grow-1">
-    <i class="fa-solid fa-magnifying-glass d-flex align-self-center p-2"></i>
+    <form class="d-flex flex-row w-100" [formGroup]="searchForm" (ngSubmit)="search()">
+      <input type="text" placeholder="Busqueda" class="rounded d-flex border-0 flex-grow-1" formControlName="searchTerm">
+      <a type="submit" class="flex-grow-0 p-2 px-4" (click)="search()"><i class="fa-solid fa-magnifying-glass"></i></a>
+    </form>
   </section>
 
   <section id="log" class="d-md-block">
-    <section id="btndsp" class="d-none d-md-block">
+    <section id="btndsp" class="d-none d-md-block" *ngIf="coreService.username == ''; else loggedOn">
       <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#signUpModal">Registrarse</button>
       <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Acceder</button>
     </section>
+
+    <ng-template #loggedOn>
+      <div class="d-flex flex-row">
+        <button type="button" class="btn btn-warning" (click)="logout()" >Log out </button>
+        <h3 class="h5 text-light mx-2 p-2">{{ coreService.username }}</h3>
+        <button type="button" class="btn btn-info mx-4" [routerLink]= "['/create']">Crear Post</button>
+        <button type="button" class="btn btn-danger mx-4" [routerLink]= "['/administrate']" *ngIf="this.coreService.role == 'admin' ">Administrar</button>
+      </div>
+    </ng-template>
+
 
     <div class="modal" id="loginModal" tabindex="-1" aria-labelledby="Acceder" aria-hidden="true">
       <div class="modal-dialog modal-fullscreen-md-down">
@@ -27,23 +39,28 @@
               <section id="loginlogo1" class="d-flex justify-content-center p-2 mt-5 ">
                 <i class="fa-solid fa-user fa-10x text-primary"></i>
               </section>
-              <section id="logininfo1" class="col-5">
 
-                <section id="mail1" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
-                  <input type="text" placeholder="Correo" class=" rounded d-flex flex-grow-1">
-                  <i class="fa-solid fa-envelope p-1 align-self-center"></i>
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="justify-content-center row">
+                <section id="logininfo1" class="col-5">
+                  <section id="loginUN" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                    <input type="text" placeholder="Usuario" class=" rounded d-flex flex-grow-1" formControlName="username">
+                    <i class="fa-solid fa-user p-1 align-self-center"></i>
+                  </section>
+
+                  <section id="loginPD" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                    <input type="text" placeholder="Contraseña" class=" rounded d-flex flex-grow-1" formControlName="password">
+                    <i class="fa-solid fa-lock p-1 align-self-center"></i>
+                  </section>
+
                 </section>
 
-                <section id="pass1" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
-                  <input type="text" placeholder="Contraseña" class=" rounded d-flex flex-grow-1">
-                  <i class="fa-solid fa-lock p-1 align-self-center"></i>
-                </section>
-              </section>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Acceder</button>
+                </div>
+
+              </form>
             </section>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <a href="controlUsuarios.html"><button type="button" class="btn btn-primary">Acceder</button></a>
           </div>
         </div>
       </div>
@@ -61,32 +78,38 @@
               <section id="loginlogo" class="d-flex justify-content-center p-2 mt-5 ">
                 <i class="fa-solid fa-user fa-10x text-primary"></i>
               </section>
-              <section id="logininfo" class="col-5">
 
-                <section id="username" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
-                  <input type="text" placeholder="Usuario" class=" rounded d-flex flex-grow-1">
-                  <i class="fa-solid fa-signature p-1 align-self-center"></i>
-                </section>
+                <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()" class="justify-content-center row">
+                  <section id="registerinfo" class="col-5">
+                    <section id="registerUN" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                      <input type="text" placeholder="Usuario" class=" rounded d-flex flex-grow-1" formControlName="username">
+                      <i class="fa-solid fa-user p-1 align-self-center"></i>
+                    </section>
 
-                <section id="mail" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
-                  <input type="text" placeholder="Correo" class=" rounded d-flex flex-grow-1">
-                  <i class="fa-solid fa-envelope p-1 align-self-center"></i>
-                </section>
+                    <section id="registerPD" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                      <input type="text" placeholder="Contraseña" class=" rounded d-flex flex-grow-1" formControlName="password">
+                      <i class="fa-solid fa-lock p-1 align-self-center"></i>
+                    </section>
 
-                <section id="pass" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
-                  <input type="text" placeholder="Contraseña" class=" rounded d-flex flex-grow-1">
-                  <i class="fa-solid fa-lock p-1 align-self-center"></i>
-                </section>
-                <section id="confpass" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
-                  <input type="text" placeholder="Confirme su contraseña" class=" rounded d-flex flex-grow-1">
-                  <i class="fa-solid fa-lock p-1 align-self-center"></i>
-                </section>
-              </section>
+                    <section id="registerPDC" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                      <input type="text" placeholder="Repita su contraseña" class=" rounded d-flex flex-grow-1" formControlName="passwordConfirmation">
+                      <i class="fa-solid fa-lock p-1 align-self-center"></i>
+                    </section>
+
+                    <section id="registerPFP" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                      <input type="text" placeholder="URL a imagen de perfil" class=" rounded d-flex flex-grow-1" formControlName="pfp">
+                      <i class="fa-solid fa-lock p-1 align-self-center"></i>
+                    </section>
+
+                  </section>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Registro</button>
+                  </div>
+
+                </form>
             </section>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <a href="controlUsuarios.html"><button type="button" class="btn btn-primary">Acceder</button></a>
           </div>
         </div>
       </div>
@@ -113,6 +136,8 @@
       <li class="d-flex justify-content-center bg-primary border-0"><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#signUpModal">Registrarse</button></li>
       <li class="d-flex justify-content-center bg-primary border-0"><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Acceder</button></li>
     </div>
+
+
     <ul class="list-group my-2 rounded">
       <li class="list-group-item"><a [routerLink]="['/home']" class="text-decoration-none">Inicio</a></li>
       <li class="list-group-item"><a [routerLink]="['/quests']" [queryParams]="{type:'quest'}"  class="text-decoration-none">Quests</a></li>

@@ -4,6 +4,7 @@ import { ModelListComponent } from './model-list/model-list.component';
 import { ModelSideMenuComponent } from './model-side-menu/model-side-menu.component';
 import {RouterLink} from "@angular/router";
 import {CoreModule} from "../core/core.module";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -15,7 +16,8 @@ import {CoreModule} from "../core/core.module";
     imports: [
         CommonModule,
         RouterLink,
-        CoreModule
+        CoreModule,
+        FormsModule
     ]
 })
 export class ModelsModule { }

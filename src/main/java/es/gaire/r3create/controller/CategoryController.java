@@ -2,11 +2,14 @@ package es.gaire.r3create.controller;
 
 import es.gaire.r3create.domain.Category;
 import es.gaire.r3create.dto.CategoryDTO;
+import es.gaire.r3create.request.DeleteRequest;
 import es.gaire.r3create.service.CategoryService;
+import es.gaire.r3create.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -15,9 +18,11 @@ import java.util.List;
 @RequestMapping("/categories")
 public class CategoryController {
     private final CategoryService categoryService;
+    private final UserService userService;
 
-    public CategoryController(CategoryService categoryService){
+    public CategoryController(CategoryService categoryService, UserService userService){
         this.categoryService = categoryService;
+        this.userService = userService;
     }
 
     @GetMapping(value = {"","/"}, params = {"!top"})
@@ -40,4 +45,14 @@ public class CategoryController {
 
     @GetMapping("/{id}")
     public Category find(@PathVariable("id") Long id) { return this.categoryService.find(id);}
+
+    @PostMapping(value = {"delete", "delete/"})
+    public ResponseEntity<?> categoryDelete(@RequestBody DeleteRequest categoryDeleteRequest){
+
+        if(userService.find(categoryDeleteRequest.getUser()).getAccessLevel().getName().equals("admin")){
+            categoryService.delete(categoryDeleteRequest.getToDelete()); //implemented but not used
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

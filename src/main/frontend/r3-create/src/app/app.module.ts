@@ -15,6 +15,8 @@ import {ForumModule} from "./forum/forum.module";
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MatCardModule } from '@angular/material/card';
+import {SearchModule} from "./search/search.module";
+import {AdministrationModule} from "./administration/administration.module";
 @NgModule({
   declarations: [
     AppComponent
@@ -32,7 +34,9 @@ import { MatCardModule } from '@angular/material/card';
       ModelsModule,
       ForumModule,
       InfiniteScrollModule,
-      MatCardModule
+      MatCardModule,
+      SearchModule,
+      AdministrationModule
     ],
   providers: [],
   bootstrap: [AppComponent]

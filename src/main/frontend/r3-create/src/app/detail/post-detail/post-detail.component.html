@@ -49,8 +49,8 @@
 
     <h2 class="card-title pt-2"> {{ post.title }} </h2>
     <h3>Autor : {{ post.user.username }}</h3>
-    <h3>Kudos : {{ post.kudos }}</h3>
-    <h3 *ngIf=" post.recompensa !=0 " >Recompensa: {{post.recompensa}} €</h3>
+    <h3>Kudos : {{ post.kudos }} <a (click)="setPostDisable($event)" *ngIf="username!==''" ><i *ngIf="username !== ''" class="fa-solid fa-arrow-up fa-1x ps-2 mx-2" [ngClass]=""></i></a></h3>
+    <h3 *ngIf=" post.recompensa !== null " >Recompensa: {{post.recompensa}} €</h3>
     <section class="row d-flex justify-content-around justify-content-md-start">
       <h4 class="pr-2 col-12 col-md-2 align-self-center">Tags: </h4>
       <button *ngFor="let category of post.categories" class="btn btn-secondary m-2 col-5 col-md-2 col-xl-1">{{ category.name }}</button>
@@ -61,6 +61,16 @@
       <p class="card-text mb-3"> {{ post.description }} </p>
     </div>
 
+    <section *ngIf="username !== ''" class="card p-4">
+
+      <p>Comentando como : <span class="text-info"> {{username}} </span></p>
+      <form [formGroup]="postCommentForm" (submit)="postComment()" class="d-flex flex-column justify-content-center flex-md-row">
+        <input class="form-control m-2" aria-label="¿Qué estás pensando?" formControlName = "text">
+        <button type="submit" class="btn btn-secondary m-2 col-12 col-md-3 col-lg-2 col-xl-2">Post comment</button>
+
+      </form>
+    </section>
+
     <section id="comments" class="my-4">
 
       <h5>Comentarios:</h5>
@@ -68,33 +78,37 @@
       <ng-container
         *ngTemplateOutlet="replyThread; context: { $implicit: post.comments }"
       ></ng-container>
-      <ng-template #replyThread let-childReplies>
+      <ng-template #replyThread let-childReplies >
 
             <div class="card text-decoration-none my-2 border-0">
               <ul id="commentlist" class="list-group">
-                <li class="list-group-item card" *ngFor="let comment of childReplies">
+                <li class="list-group-item card" *ngFor="let comment of childReplies" >
+
                     <section class="d-flex flex-row p-2">
                       <div class="rounded-circle" style="height: 50px; width: 50px;background-size: cover; background-image: url({{ comment.user.pfp }});"></div>
-                      <h6 class="px-1 align-self-end px-4">{{ comment.user.username }}</h6>
+                      <h6 class="px-1 align-self-end px-4">{{ comment.user.username}}</h6>
                     </section>
                     <p class="px-2"> {{ comment.text }} </p>
                     <section class="d-flex flex-row p-2 align-items-center border border-dark rounded-bottom">
                       <div class="d-flex flex-row col-3 col-md-2">
                         <p class="text-center m-0 fs-5 ps-2">{{ comment.kudos }}</p>
                         <p class="text-center m-0 fs-5 ps-2 d-none d-md-block"> kudos</p>
-                        <i class="fa-solid fa-arrow-up fa-2x ps-2"></i>
+                        <a (click)="setDisable($event, comment)"><i *ngIf="username !== ''" class="fa-solid fa-arrow-up fa-2x ps-2" [ngClass]=""></i></a>
                       </div>
-                      <div class="d-flex flex-row col-2">
-                        <p class="text-center m-0 fs-5 d-none d-lg-block">Responder</p>
-                        <i class="fa-regular fa-message fa-2x px-2"></i>
-                      </div>
-                      <div class="d-flex flex-row col-2">
-                        <p class="text-center m-0 fs-5 d-none d-lg-block">Reportar</p>
-                        <i class="fa-solid fa-flag fa-2x px-2"></i>
+                      <div *ngIf="username !== ''" class="row w-100">
+                        <div class="d-flex flex-row col-2">
+                          <a class="text-center m-0 fs-5 d-none d-lg-block text-decoration-none" data-bs-toggle="modal" data-bs-target="#responseModal" (click)="setResponseCommentId(comment.idComment)">Responder</a>
+                          <i class="fa-regular fa-message fa-2x px-2"></i>
+                        </div>
+                        <div class="d-flex flex-row col-2 d-none">
+                          <p class="text-center m-0 fs-5 d-none d-lg-block">Reportar</p>
+                          <i class="fa-solid fa-flag fa-2x px-2"></i>
+                        </div>
                       </div>
                     </section>
 
-                  <ng-container *ngIf="comment.comments">
+
+                  <ng-container *ngIf="comment.comments !== null">
                     <ng-container
                       *ngTemplateOutlet="
                         replyThread;
@@ -108,6 +122,27 @@
             </div>
 
       </ng-template>
+
+      <div class="modal fade" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form [formGroup]="postCommentForm" (submit)="postComment()" class="d-flex flex-column">
+            <div class="modal-body">
+              <p>Comentando como : <span class="text-info"> {{username}} </span></p>
+                <input class="form-control" aria-label="¿Qué estás pensando?" formControlName = "text">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="setResponseCommentId(-1)" >Close</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" >Post</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
 
     </section>
   </section>

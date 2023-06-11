@@ -1,0 +1,93 @@
+<section class="justify-content-center d-flex">
+  <main class="justify-content-center container-xl row">
+    <form [formGroup]="postCreationForm" (ngSubmit)="createPost()" class="p-4">
+      <section id="title" class="my-2">
+        <label class="form-label">Título</label>
+        <input type="text" class="form-control" formControlName="title">
+      </section>
+      <section id="type" class="my-2">
+        <label class="form-label">Típo:</label>
+        <select id="typeSelected" class="form-control" formControlName="type" (change)="changeType($event)">
+          <option *ngFor="let type of types" [ngValue]="type.name" > {{ type.name }} </option>
+        </select>
+      </section>
+      <section id="reward" *ngIf="selectedType == 'quest' " class="my-2">
+        <label class="form-label">Recompensa:</label>
+        <input type="number" class="form-control" formControlName="reward">
+      </section>
+
+      <section id="categories" class="my-2">
+        <label class="form-label">Categorías:</label>
+        <ng-multiselect-dropdown
+          [placeholder]="'Categorías'"
+          [settings]="dropdownSettings"
+          [data]="categories"
+          [(ngModel)]="selectedCategories"
+          (onSelect)="onItemSelect($event)"
+        >
+        </ng-multiselect-dropdown>
+      </section>
+
+      <section id="description" class="my-2">
+        <label class="form-label">Descripción:</label>
+        <textarea type="text" class="form-control" formControlName="description" rows="5"></textarea>
+      </section>
+
+      <section id="images" class="my-2">
+        <label class="form-label w-100">Imagenes:</label>
+        <div *ngIf="images.length>0">
+          <p class="btn btn-light mx-2" *ngFor="let image of images">{{image.title}}</p>
+        </div>
+
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#imageModal">Añadir imagen</button>
+
+      </section>
+
+      <section id="submitCreation" class="my-5 d-flex justify-content-center">
+        <button type="submit" class="btn btn-info col-6 col-md-4 col-xl-2">Crear</button>
+      </section>
+
+    </form>
+  </main>
+</section>
+
+<div class="modal" id="imageModal" tabindex="-1" aria-labelledby="Acceder" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logInModalLabel">Añadir imagen</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <section id="maincontainer1" class="container-md justify-content-center row">
+          <section id="loginlogo1" class="d-flex justify-content-center p-2 mt-5 ">
+            <i class="fa-regular fa-image fa-10x"></i>
+          </section>
+
+          <form [formGroup]="imageCreationForm" (ngSubmit)="addImage()" class="justify-content-center row">
+            <section id="imagebody" class="col-5">
+              <section id="titleform" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                <input type="text" placeholder="Título" class=" rounded d-flex flex-grow-1" formControlName="title">
+              </section>
+
+              <section id="altform" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                <input type="text" placeholder="alt" class=" rounded d-flex flex-grow-1" formControlName="alt">
+              </section>
+
+              <section id="srcform" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
+                <input type="text" placeholder="src" class=" rounded d-flex flex-grow-1" formControlName="src">
+              </section>
+
+            </section>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Añadir</button>
+            </div>
+
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

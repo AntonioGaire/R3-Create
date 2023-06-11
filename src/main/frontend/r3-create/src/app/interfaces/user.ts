@@ -6,4 +6,6 @@ export interface User {
   username: string;
   pfp: string;
   accessLevel: AccessLevel;
+
+  authorities :  [{ "authority": String }],
 }

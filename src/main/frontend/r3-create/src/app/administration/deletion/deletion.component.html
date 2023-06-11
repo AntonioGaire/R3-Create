@@ -1,0 +1,82 @@
+<section class="justify-content-center d-flex">
+  <main class="justify-content-center container-xl row">
+    <div class="row">
+
+      <section id="adminSelection" class="my-4">
+        <h5>¿Qué quiere administrar?</h5>
+
+        <select class="form-control" formControlName="admin" (change)="changeAdmin($event)">
+          <option ngValue="1">Usuarios y comentarios</option>
+          <option ngValue="2">Posts y categorías</option>
+        </select>
+      </section>
+
+      <section id="useradministration" *ngIf="admin==1" class="row">
+        <section id="users" class="col-12 col-md-6 list-group">
+          <div style="overflow-y: scroll; height:60vh;">
+            <h4 id="scrollspyHeading1">Usuarios</h4>
+            <li class="list-group-item d-flex" *ngFor="let user of users">
+              <div>
+                <span class="text-info">{{user.idUser}}</span>
+                - {{user.username}}
+                <span [ngClass]="[user.authorities[0].authority === 'admin' ? 'text-danger' : 'text-info']">{{user.authorities[0].authority}}</span>
+              </div>
+              <button class="align-content-end btn btn-close-white ms-auto" (click)="setDelete(user)" data-bs-toggle="modal" data-bs-target="#sureModal"><i class="fa-solid fa-ban text-warning-emphasis"></i></button>
+            </li>
+          </div>
+        </section>
+        <section id="comments" class="col-12 col-md-6 list-group" >
+          <div style="overflow-y: scroll; height:60vh;">
+            <h4 id="scrollspyHeading2">Comentarios</h4>
+            <li class="list-group-item d-flex" *ngFor="let comment of comments">
+              <div>
+                <span class="text-info">{{comment.idComment}}</span> - {{comment.text}} By:
+                <span class="text-info"> {{comment.user.username}}</span> <span [ngClass]="[comment.user.authorities[0].authority === 'admin' ? 'text-danger' : 'text-info']"> {{comment.user.authorities[0].authority}}</span>
+              </div>
+              <button class="align-content-end btn btn-close-white ms-auto" (click)="setDelete(comment)" data-bs-toggle="modal" data-bs-target="#sureModal"><i class="fa-solid fa-ban text-warning-emphasis"></i></button>
+            </li>
+          </div>
+        </section>
+      </section>
+
+      <section id="postadministration" *ngIf="admin==2" class="row">
+        <section id="posts" class="col-12 col-md-6 list-group">
+          <div style="overflow-y: scroll; height:60vh;">
+            <h4 id="scrollspyHeading3">Posts</h4>
+            <li class="list-group-item d-flex" *ngFor="let post of posts"><span class="text-info">{{post.idPost}}</span> - {{post.title}} - <span class="text-info">{{post.postType.name}}</span>
+              <button class="align-content-end btn btn-close-white ms-auto" (click)="setDelete(post)" data-bs-toggle="modal" data-bs-target="#sureModal"><i class="fa-solid fa-ban text-warning-emphasis"></i></button>
+            </li>
+          </div>
+        </section>
+        <section id="categories" class="col-12 col-md-6">
+          <div style="overflow-y: scroll; height:60vh;" class="list-group">
+            <h4 id="scrollspyHeading4">Categorias</h4>
+            <li class="list-group-item d-flex" *ngFor="let cat of categories"><span class="text-info">{{cat.idCategory}}</span> - {{cat.name}} - <span class="text-info" [ngClass]="cat.icon + 'fa-1x'" ></span>
+              <button class="align-content-end btn btn-close-white ms-auto" (click)="setDelete(cat)" data-bs-toggle="modal" data-bs-target="#sureModal"><i class="fa-solid fa-ban text-warning-emphasis"></i></button>
+            </li>
+          </div>
+        </section>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <div class="modal mt-5" id="sureModal" tabindex="-1" aria-labelledby="Acceder" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-md-down">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logInModalLabel">¿Está seguro?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex justify-content-between">
+
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="setDelete(null)" >Cerrar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="delete()" >Eliminar</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

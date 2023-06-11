@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Category} from "../../interfaces/category";
 import {ModelService} from "../model.service";
 import {CategoryDTO} from "../../interfaces/category-dto";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'app-model-side-menu',
@@ -10,8 +11,9 @@ import {CategoryDTO} from "../../interfaces/category-dto";
 })
 export class ModelSideMenuComponent implements OnInit {
   categoriesDTO: CategoryDTO[] = [];
+  kudos:number=0;
 
-  constructor(public modelService: ModelService) {
+  constructor(public modelService: ModelService, private route:ActivatedRoute, private router:Router) {
   }
 
   ngOnInit(): void {
@@ -19,5 +21,17 @@ export class ModelSideMenuComponent implements OnInit {
       this.categoriesDTO = data;
       console.log("DTO", data);
     })
+  }
+
+  addKudos(e:any){
+    const queryParams: Params = { kudos: e };
+
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.route,
+        queryParams: queryParams,
+        queryParamsHandling: 'merge', // remove to replace all query params by provided
+      });
   }
 }

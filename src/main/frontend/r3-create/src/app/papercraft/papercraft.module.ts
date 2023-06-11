@@ -7,6 +7,7 @@ import { PapercraftSideMenuComponent } from './papercraft-side-menu/papercraft-s
 import {HomeModule} from "../home/home.module";
 import {BrowserModule} from "@angular/platform-browser";
 import {CoreModule} from "../core/core.module";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -21,7 +22,8 @@ import {CoreModule} from "../core/core.module";
         QuestsModule,
         HomeModule,
         BrowserModule,
-        CoreModule
+        CoreModule,
+        FormsModule
     ],
   exports: [
     PaperfraftListComponent,

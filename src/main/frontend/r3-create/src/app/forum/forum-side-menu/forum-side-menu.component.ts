@@ -4,6 +4,7 @@ import {PostType} from "../../interfaces/post-type";
 import {ForumService} from "../forum.service";
 import {User} from "../../interfaces/user";
 import {CategoryDTO} from "../../interfaces/category-dto";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'app-forum-side-menu',
@@ -15,9 +16,10 @@ export class ForumSideMenuComponent implements OnInit {
   categoriesDTO : CategoryDTO[] = [];
   topCategories: Category[] = [];
   topUsers: User[] = [];
+  kudos:number=0;
 
 
-  constructor(public forumService: ForumService) {
+  constructor(public forumService: ForumService, private route : ActivatedRoute, private router : Router) {
   }
 
   ngOnInit(): void {
@@ -36,5 +38,17 @@ export class ForumSideMenuComponent implements OnInit {
       this.categoriesDTO = data;
       console.log("DTO", data);
     })
+  }
+
+  addKudos(e:any){
+    const queryParams: Params = { kudos: e };
+
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.route,
+        queryParams: queryParams,
+        queryParamsHandling: 'merge', // remove to replace all query params by provided
+      });
   }
 }
