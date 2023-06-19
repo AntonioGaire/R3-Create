@@ -1,6 +1,6 @@
 <section class="justify-content-center d-flex">
   <main class="justify-content-center container-xl row">
-    <div class="col-xl-9 col-sm-7">
+    <div class="col-xl-9 col-md-7 col-12">
       <div *ngFor="let post of posts" class="my-3">
         <article class="card" [routerLink]="['/home/', post.idPost  ]">
           <section class="d-flex flex-row justify-content-between p-2 align-items-center border border-dark rounded-top">
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <aside class="row d-none d-md-flex col-xl-3 col-sm-5">
+    <aside class="row d-none d-md-flex col-xl-3 col-md-5">
       <app-forum-side-menu></app-forum-side-menu>
     </aside>
   </main>

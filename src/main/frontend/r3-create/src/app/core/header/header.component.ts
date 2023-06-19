@@ -101,6 +101,7 @@ export class HeaderComponent implements OnInit{
   logout(): void{
     this.coreService.username='';
     this.localStorageService.remove("access_token")
+    this.localStorageService.remove("role")
   }
 
   search(){

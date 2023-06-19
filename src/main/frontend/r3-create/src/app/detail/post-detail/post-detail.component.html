@@ -50,7 +50,7 @@
     <h2 class="card-title pt-2"> {{ post.title }} </h2>
     <h3>Autor : {{ post.user.username }}</h3>
     <h3>Kudos : {{ post.kudos }} <a (click)="setPostDisable($event)" *ngIf="username!==''" ><i *ngIf="username !== ''" class="fa-solid fa-arrow-up fa-1x ps-2 mx-2" [ngClass]=""></i></a></h3>
-    <h3 *ngIf=" post.recompensa !== null " >Recompensa: {{post.recompensa}} €</h3>
+    <h3 *ngIf=" post.recompensa !== null && 0 " >Recompensa: {{post.recompensa}} €</h3>
     <section class="row d-flex justify-content-around justify-content-md-start">
       <h4 class="pr-2 col-12 col-md-2 align-self-center">Tags: </h4>
       <button *ngFor="let category of post.categories" class="btn btn-secondary m-2 col-5 col-md-2 col-xl-1">{{ category.name }}</button>
@@ -127,7 +127,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Responder</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form [formGroup]="postCommentForm" (submit)="postComment()" class="d-flex flex-column">

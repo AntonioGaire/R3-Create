@@ -33,11 +33,9 @@ public class UserController {
         return this.userService.findTopUsers(top);
     }
 
-//    @GetMapping("/{id}")
-//    public User find(@PathVariable("id") Long id) { return this.userService.find(id);}
-
     @GetMapping("/{username}")
     public User find(@PathVariable("username") String username) { return this.userService.find(username);}
+
 
     @PostMapping(value = {"delete", "delete/"})
     public ResponseEntity<?> userDelete(@RequestBody DeleteRequest userDeleteRequest){

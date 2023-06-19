@@ -17,8 +17,8 @@
       <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Acceder</button>
     </section>
 
-    <ng-template #loggedOn>
-      <div class="d-flex flex-row">
+    <ng-template #loggedOn >
+      <div class="d-none d-lg-flex flex-row">
         <button type="button" class="btn btn-warning" (click)="logout()" >Log out </button>
         <h3 class="h5 text-light mx-2 p-2">{{ coreService.username }}</h3>
         <button type="button" class="btn btn-info mx-4" [routerLink]= "['/create']">Crear Post</button>
@@ -48,7 +48,7 @@
                   </section>
 
                   <section id="loginPD" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
-                    <input type="text" placeholder="Contraseña" class=" rounded d-flex flex-grow-1" formControlName="password">
+                    <input type="password" placeholder="Contraseña" class=" rounded d-flex flex-grow-1" formControlName="password">
                     <i class="fa-solid fa-lock p-1 align-self-center"></i>
                   </section>
 
@@ -87,12 +87,12 @@
                     </section>
 
                     <section id="registerPD" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
-                      <input type="text" placeholder="Contraseña" class=" rounded d-flex flex-grow-1" formControlName="password">
+                      <input type="password" placeholder="Contraseña" class=" rounded d-flex flex-grow-1" formControlName="password">
                       <i class="fa-solid fa-lock p-1 align-self-center"></i>
                     </section>
 
                     <section id="registerPDC" class="rounded border bg-light justify-content-center d-flex flex-row my-2">
-                      <input type="text" placeholder="Repita su contraseña" class=" rounded d-flex flex-grow-1" formControlName="passwordConfirmation">
+                      <input type="password" placeholder="Repita su contraseña" class=" rounded d-flex flex-grow-1" formControlName="passwordConfirmation">
                       <i class="fa-solid fa-lock p-1 align-self-center"></i>
                     </section>
 
@@ -132,10 +132,23 @@
 <div class="collapse justify-content-center d-md-none" id="navbarToggleExternalContent2">
   <ul class="bg-primary list-group">
 
-    <div id="buttons" class=" d-flex flex-row justify-content-around list-group-item bg-primary border-0">
+    <div id="buttons" class=" d-flex flex-row justify-content-around list-group-item bg-primary border-0" *ngIf="coreService.username == ''; else loggedOnMobile">
       <li class="d-flex justify-content-center bg-primary border-0"><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#signUpModal">Registrarse</button></li>
       <li class="d-flex justify-content-center bg-primary border-0"><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Acceder</button></li>
     </div>
+
+    <ng-template #loggedOnMobile >
+      <div class="d-flex flex-column">
+        <div class="d-flex flex-row justify-content-evenly my-4">
+          <h3 class="h5 text-light mx-4 col-4 text-center">{{ coreService.username }}</h3>
+          <button type="button" class="btn btn-warning mx-4 col-4" (click)="logout()" >Log out </button>
+        </div>
+        <div class="d-flex flex-row justify-content-evenly">
+          <button type="button" class="btn btn-info mx-4 col-4" [routerLink]= "['/create']">Crear Post</button>
+          <button type="button" class="btn btn-danger mx-4 col-4" [routerLink]= "['/administrate']" *ngIf="this.coreService.role == 'admin' ">Administrar</button>
+        </div>
+      </div>
+    </ng-template>
 
 
     <ul class="list-group my-2 rounded">

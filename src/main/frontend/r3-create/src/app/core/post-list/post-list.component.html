@@ -4,7 +4,7 @@
          [infiniteScrollThrottle]="1000"
          (scrolled)="onScroll()">
 
-  <div *ngFor="let post of posts" class="col-12 col-sm-6 col-lg-4 p-2 text-decoration-none border-0">
+  <div *ngFor="let post of posts" class="col-12 col-lg-6 col-xxl-4 p-2 text-decoration-none border-0">
     <article class="card" [routerLink]="['/home/', post.idPost  ]">
       <img [src]=" post.images[0].src" *ngIf="post.images[0] != undefined; else forumpost">
       <ng-template #forumpost>
